@@ -7,14 +7,33 @@ body
 }
 #number
 {
-	width: 80px;
+	width: 100px;
+}
+p
+{
+  font-size:24px;
+}
+#neko
+{
+   background-color:RGB(175,175,175);
+   color:blalck;
+   width:70px;
+   height:30px;
+   border:none;	
+}
+#neko:hover
+{
+ background-color:gray;
+ color:white;
+ border:none;
 }
 </style>
 <body>
 	<p><span id="pb"> </span><span> * </span> <span id="db"></span> <span> = <input id="number">
-	<button id="neko" onclick="pitaj()">Racunaj</button></span></p>
-  <p>Tacnih: <span id="tacno">0</span></p>
+	</span></p>
+        <p>Tacnih: <span id="tacno">0</span></p>
 	<p>Omasio: <span id="jok">0</span></p>
+        <button id="neko" onclick="pitaj()">Racunaj</button>
 
 </body>
 <script>
@@ -53,8 +72,8 @@ function brisi()
 }
 function create()
 {
-	a=Math.floor(Math.random()*(20-3))+3;
-	b=Math.floor(Math.random()*(20-3))+3;
+	a=Math.floor(Math.random()*(10-3))+3;
+	b=Math.floor(Math.random()*(10-3))+3;
 }
 </script>
 </html>
