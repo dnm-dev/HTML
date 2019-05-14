@@ -14,6 +14,8 @@ body
 p
 {
   font-size:24px;
+  margin-left:9px;
+
 }
 #neko
 {
@@ -21,20 +23,24 @@ p
    color:blalck;
    width:70px;
    height:30px;
-   border:none;	
+   border:none;
+   box-shadow: 2px 2px 4px #000000;
+   margin-left:5%;
 }
 #neko:hover
 {
  background-color:gray;
  color:white;
  border:none;
+
 }
 div
 {
+  border-style:outset;
   background-color:#45afe0;
-  margin: 0px;
   width:300px;
-  height:200px;
+  height:230px;
+  
 }
 </style>
 <body>
@@ -45,46 +51,9 @@ div
 	<p>Omasio: <span id="jok">0</span></p>
         <button id="neko" onclick="pitaj()">Racunaj</button>
 </div>
-
+<p id="Vreme"></p>
 </body>
-<script>
-	var br=0,br1=0,a,b;
-	create();
-	document.getElementById("pb").innerHTML=a;
-	document.getElementById("db").innerHTML=b;
-  document.getElementById("number").addEventListener("keyup",function(event)
-	{
-		if(event.keyCode == 13)
-		{
-			event.preventDefault();
-			document.getElementById("neko").click();
-		}
-	})
-function pitaj(){
-var input=document.getElementById("number").value;
-if(input == a*b)
-{
-	br++;
-	document.getElementById("tacno").innerHTML=br;
-	brisi();
-}
-else{
-	br1++;
-	document.getElementById("jok").innerHTML=br1;
-	brisi();
-}
-}
-function brisi()
-{
-	create();
-	document.getElementById("pb").innerHTML=a;
-	document.getElementById("db").innerHTML=b;
-	document.getElementById("number").value=null;
-}
-function create()
-{
-	a=Math.floor(Math.random()*(10-3))+3;
-	b=Math.floor(Math.random()*(10-3))+3;
-}
+<script src="MM1.js"> 
+    
 </script>
 </html>
