@@ -21,8 +21,9 @@ if(input == a*b)
 else{
 	br1++;
 	document.getElementById("jok").innerHTML=br1;
-	brisi();
-}
+	brisi();}
+
+
 }
 function brisi()
 {
@@ -36,14 +37,29 @@ function create()
 	a=Math.floor(Math.random()*(10-3))+3;
 	b=Math.floor(Math.random()*(10-3))+3;
 }
+
+	var minuti=0;
+	var sekunde=3;
 var y=setInterval(function(){
-var tm=10000;
-var minuti=Math.floor((tm%(1000*60*60))/(1000*60));
-var sekundi=Math.floor((tm%(1000*60))/1000);
-document.getElementById("Vreme").innerHTML=minuti+"m:"+sekundi+"s";
-if(tm<0)
-{
- clearInterval(y);
- document.getElementById("Vreme").innerHTML = "GOTOVO VREME!";
-}
+ispitaj();
 },1000);
+function ispitaj()
+{
+	if(sekunde==0)
+	{
+		minuti--;
+		sekunde=60;
+		if(minuti<10)
+			minuti="0"+minuti;
+	}
+	sekunde--;
+	if(sekunde<10)
+		sekunde="0"+sekunde;
+	document.getElementById("vreme").innerHTML=minuti+"m:"+sekunde+"s";
+	if(minuti <= 0 && sekunde <= 0)
+	{
+		clearInterval(y);
+		document.getElementById("vreme").innerHTML="VREME JE ISTEKLO!";
+		document.getElementById("neko").remove();
+	}
+}
