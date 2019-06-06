@@ -5,58 +5,85 @@ using System.Text;
 
 namespace ConsoleApplication1
 {
+
     class Program
     {
+
+        static void sort(ref double[] niz, ref string[] ime)
+        {
+            int n = niz.Length;
+            for (int i = 0; i < n - 1; i++)
+            {
+                int min_idx = i;
+                for (int j = i + 1; j < n; j++)
+                    if (niz[j] > niz[min_idx])
+                        min_idx = j;
+                double temp = niz[min_idx];
+                niz[min_idx] = niz[i];
+                niz[i] = temp;
+                string tmp = ime[min_idx];
+                ime[min_idx] = ime[i];
+                ime[i] = tmp;
+            }
+        }
+
+        static double uspeh(string[] unos)
+        {
+            int n = unos.Length;
+            double zbir = 0;
+            int count = 0;
+            bool provera = false;
+            for (int i = n - 1; i > 0; i--)
+            {
+                zbir += double.Parse(unos[i]);
+                if (unos[i] == "1")
+                    provera=true;
+                count++;
+            }
+            double prosek = zbir / count;
+            if (provera)
+                prosek = 1;
+            int p = (int)Math.Round(prosek);
+            return prosek;
+        }
         static void Main(string[] args)
         {
-            int n=int.Parse(Console.ReadLine());
-            Console.WriteLine(nadji(n));
+            Console.Write("Unesi broj ucenika: ");
+            int n = int.Parse(Console.ReadLine());
+            string[] ucenik = new string[n];
+            double[] proseci = new double[n];
+            for (int i = 0; i < n; i++)
+            {
+                string[] unos = Console.ReadLine().Split();
+                ucenik[i]=unos[0];
+                proseci[i] = uspeh(unos);    
+            }
+            sort(ref proseci,ref ucenik);
+            Console.WriteLine();
+            Console.WriteLine("Izvestaj o ucenicima: ");
+            Console.WriteLine();
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine(ucenik[i]+" "+Jedna(proseci[i]));
+            }
         }
-        static int nadji(int e)
+        static string Jedna(double prosek1)
         {
-            int m1 = 0, m2 = 0, m3 = 0,q=e,z=1,d=e;
-            while (e > 0)
-            {
-                int br = e % 10;
-                if (br > m1)
-                    m1 = br;
-                e/=10;
+            prosek1 = Math.Round(prosek1, 0);
+            switch (prosek1) {
+                case 1:
+                    return " => "+"Nedovoljan";
+                case 2:
+                    return prosek1.ToString() + " => " + "Dovoljan";
+                case 3:
+                    return prosek1.ToString() + " => " + "Dobar";
+                case 4:
+                    return prosek1.ToString() + " => " + "Vrolo dobar";
+                case 5:
+                    return prosek1.ToString() + " => " + "Odlican";
             }
-            z = m1 * 100;
-            int l = m1;
-            while(q>0)
-            {
-                int br = q % 10;
-                if (br == l)
-                {
-                    l = -1;
-                    br = -1;                
-                }                    
-                if (br > m2)
-                        m2 = br;
-                q /= 10;
-            }
-            z = z + (m2 * 10);
-            
-            while (d > 0)
-            {
-                int br = d % 10;
-                if (br == m2)
-                {
-                    m2 = -1;
-                    br = -1;
-                }
-                if (br == m1)
-                {
-                    m1 = -1;
-                    br = -1;
-                }
-                if (br > m3)
-                    m3 = br;
-                d/= 10;
-            }
-            z = z + m3;
-            return z;
+            return "Los unos";
         }
+
     }
 }
