@@ -1,6 +1,30 @@
 ﻿<!DOCTYPE>
 <html>
 <style>
+ul
+{
+  list-style-type: none;
+  margin: -10px;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+li
+{
+   float:right;
+}
+li a
+{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  border-left:2px solid RGB(255,255,255);
+}
+li a:hover:not(.active) {
+  background-color: #111;
+}
 input[type=password],[type=username] {
   width: 20%;
   padding: 12px 20px;
@@ -14,7 +38,14 @@ label[for=username]
 }
 .username{text-size:20px}
 </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <body>
+<ul>
+  <li><a href="https://www.google.com">Login</a></li>
+  <li><a href="https://www.google.com">Contact</a></li>
+</ul>
+<br>
 <label for="usn"><strong>Username</strong></label>
 <br>
 <input type="username" placeholder="Unesi Ime" name="usn" required>
